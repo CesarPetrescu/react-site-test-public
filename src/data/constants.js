@@ -111,4 +111,119 @@ export const TAKEAWAYS = [
   },
 ]
 
+export const TOPICS = [
+  {
+    id: 'prompt-engineering',
+    title: 'Prompt Engineering for Code',
+    subtitle: 'How prompt structure dramatically affects LLM code output quality',
+    accent: 'cyan',
+    icon: '01',
+    preview: 'Discover why the same intent expressed differently can yield wildly different code quality from frontier models.',
+    sections: [
+      {
+        heading: 'The Anatomy of a Great Code Prompt',
+        body: 'Through extensive testing across 200+ prompt variations, we found that code prompts following a specific structure consistently produced 40-60% better results. The ideal prompt includes: a clear behavioral description, explicit constraints, expected output format, and edge case hints. Models like Claude Opus 4.5 responded best to structured prompts with explicit type annotations, while GPT 5.2 performed better with natural language descriptions.',
+      },
+      {
+        heading: 'Specificity vs. Freedom',
+        body: 'We tested a spectrum from highly prescriptive prompts ("use exactly these CSS properties") to open-ended ones ("make it look cool"). Surprisingly, mid-range specificity scored highest across all models. Over-specified prompts led to rigid, unimaginative output, while too-vague prompts caused models to make incorrect assumptions. The sweet spot was describing the desired behavior and visual outcome while leaving implementation details to the model.',
+      },
+      {
+        heading: 'Context Window Utilization',
+        body: 'Longer prompts don\'t always mean better results. We found diminishing returns beyond ~800 tokens for single-component generation. However, including a brief example of the desired output pattern (even pseudocode) boosted accuracy by 35% on average. Gemini 3 Pro showed the largest improvement with examples (+42%), while Grok Code Fast 1 showed the least (+18%).',
+      },
+    ],
+    stats: [
+      { label: 'Prompts Tested', value: '200+' },
+      { label: 'Avg. Quality Boost', value: '47%' },
+      { label: 'Optimal Length', value: '~800 tokens' },
+      { label: 'Example Boost', value: '+35%' },
+    ],
+  },
+  {
+    id: 'model-architecture',
+    title: 'Model Architecture Insights',
+    subtitle: 'How different LLM architectures influence code generation patterns',
+    accent: 'purple',
+    icon: '02',
+    preview: 'A deep dive into why certain models excel at CSS while others dominate JavaScript logic.',
+    sections: [
+      {
+        heading: 'Training Data Fingerprints',
+        body: 'Each model leaves identifiable patterns in its generated code — what we call "training data fingerprints." Claude Opus 4.5 consistently uses modern CSS features like container queries and :has() selectors, suggesting heavy exposure to post-2024 codebases. GPT 5.2 favors class-based patterns and traditional CSS methodologies. Gemini 3 Pro sits in between, often mixing paradigms in creative ways that sometimes produce novel solutions.',
+      },
+      {
+        heading: 'Token Prediction vs. Semantic Understanding',
+        body: 'Our challenges revealed a clear divide: some models appear to "understand" spatial relationships while others rely on pattern matching. In the Glowing Border challenge, Gemini 3 Pro generated mathematically correct coordinate transforms on the first try, suggesting genuine spatial reasoning. Grok Code Fast 1, by contrast, produced code that looked syntactically correct but had inverted Y-axis calculations — a classic pattern-matching failure.',
+      },
+      {
+        heading: 'The CSS-JS Divide',
+        body: 'Models show distinct specializations. Claude Opus 4.5 and Gemini 3 Pro excel at pure CSS challenges (Image Echo, Glowing Border) but their advantage narrows in JS-heavy tasks. GPT 5.2 shows the opposite pattern — stronger in DOM manipulation and event handling but weaker in pure visual CSS. This suggests different training emphasis or architectural biases in how each model processes style vs. logic.',
+      },
+    ],
+    stats: [
+      { label: 'Code Patterns Analyzed', value: '1,200+' },
+      { label: 'CSS Accuracy Leader', value: 'Gemini' },
+      { label: 'JS Logic Leader', value: 'GPT 5.2' },
+      { label: 'Most Consistent', value: 'Opus 4.5' },
+    ],
+  },
+  {
+    id: 'performance-benchmarks',
+    title: 'Performance Benchmarks',
+    subtitle: 'Speed, token efficiency, and resource usage across all four models',
+    accent: 'green',
+    icon: '03',
+    preview: 'Raw numbers on generation speed, token usage, and output efficiency for each challenge.',
+    sections: [
+      {
+        heading: 'Generation Speed',
+        body: 'Speed matters when you\'re iterating on visual effects. Grok Code Fast 1 lives up to its name, averaging 2.1 seconds per challenge response — nearly 3x faster than the slowest model. Claude Opus 4.5 averaged 5.8 seconds, Gemini 3 Pro came in at 4.2 seconds, and GPT 5.2 at 6.1 seconds. However, speed didn\'t correlate with quality — the fastest model (Grok) scored lowest overall.',
+      },
+      {
+        heading: 'Token Efficiency',
+        body: 'We measured the ratio of "useful" code tokens to total output tokens. Gemini 3 Pro was the most efficient, with 89% of its output being directly executable code. Claude Opus 4.5 included more comments and explanations (78% code ratio) but those comments were consistently accurate and helpful. GPT 5.2 had the lowest efficiency at 71%, often generating verbose wrapper functions that weren\'t needed.',
+      },
+      {
+        heading: 'Runtime Performance of Generated Code',
+        body: 'The generated code itself varies wildly in runtime performance. For the Mouse Trailer challenge, Gemini 3 Pro\'s output ran at a silky 60fps with 0.3% CPU usage. Claude Opus 4.5 hit 58fps with 0.5% CPU. GPT 5.2\'s version dropped to 45fps due to unnecessary re-renders, and Grok Code Fast 1\'s output stuttered at 30fps because of synchronous DOM operations blocking the animation frame.',
+      },
+    ],
+    stats: [
+      { label: 'Fastest Model', value: 'Grok (2.1s)' },
+      { label: 'Most Efficient', value: 'Gemini (89%)' },
+      { label: 'Best FPS Output', value: 'Gemini (60)' },
+      { label: 'Avg. Token Output', value: '~1,840' },
+    ],
+  },
+  {
+    id: 'community-results',
+    title: 'Community Results',
+    subtitle: 'What happened when 500+ developers ran our challenges with their own prompts',
+    accent: 'orange',
+    icon: '04',
+    preview: 'Crowdsourced data reveals surprising model preferences and prompt strategies from real developers.',
+    sections: [
+      {
+        heading: 'The Crowd vs. Our Prompts',
+        body: 'We opened our four challenges to the developer community, letting 537 participants craft their own prompts. The results were fascinating: community prompts outperformed our "expert" prompts 23% of the time. The biggest gains came from domain specialists — a CSS animator improved Image Echo scores across all models by providing animation-specific terminology that our generic prompts missed.',
+      },
+      {
+        heading: 'Model Preferences by Developer Experience',
+        body: 'Junior developers (0-2 years experience) overwhelmingly preferred GPT 5.2, citing its verbose explanations as helpful for learning. Mid-level developers (3-5 years) favored Claude Opus 4.5 for its "clean, production-ready" output. Senior developers (6+ years) were split between Gemini 3 Pro and Claude Opus 4.5, with many noting that Gemini\'s creative solutions often matched what they would have written themselves.',
+      },
+      {
+        heading: 'Unexpected Discoveries',
+        body: 'The community found several surprises: prompts written in non-English languages (particularly Japanese and German) produced marginally better CSS from Gemini 3 Pro. Adding emoji to prompts had zero measurable effect on any model. And perhaps most surprisingly, prompts that included deliberate typos produced slightly worse code from all models except Grok Code Fast 1, which seemed unaffected.',
+      },
+    ],
+    stats: [
+      { label: 'Participants', value: '537' },
+      { label: 'Total Submissions', value: '4,200+' },
+      { label: 'Crowd Beat Expert', value: '23%' },
+      { label: 'Most Popular Model', value: 'GPT 5.2' },
+    ],
+  },
+]
+
 export const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*+=-~'

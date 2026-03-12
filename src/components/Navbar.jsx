@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { path: '/', label: 'Home' },
   { path: '/challenges', label: 'Challenges' },
   { path: '/gallery', label: 'Gallery' },
+  { path: '/topics', label: 'Topics' },
   { path: '/about', label: 'About' },
 ]
 
@@ -42,10 +43,10 @@ export default function Navbar() {
             <Link
               key={path}
               to={path}
-              className={`navbar-link ${location.pathname === path ? 'active' : ''}`}
+              className={`navbar-link ${location.pathname === path || (path !== '/' && location.pathname.startsWith(path)) ? 'active' : ''}`}
             >
               {label}
-              {location.pathname === path && (
+              {(location.pathname === path || (path !== '/' && location.pathname.startsWith(path))) && (
                 <motion.div
                   className="navbar-link-indicator"
                   layoutId="nav-indicator"
