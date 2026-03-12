@@ -6,6 +6,8 @@ import Home from './pages/Home'
 import Challenges from './pages/Challenges'
 import Gallery from './pages/Gallery'
 import About from './pages/About'
+import Topics from './pages/Topics'
+import TopicDetail from './pages/TopicDetail'
 
 export default function App() {
   const location = useLocation()
@@ -19,6 +21,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/challenges" element={<Challenges />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/topics" element={<Topics />} />
+            <Route path="/topics/:slug" element={<TopicDetail />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </AnimatePresence>

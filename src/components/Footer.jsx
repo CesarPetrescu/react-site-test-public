@@ -19,6 +19,7 @@ export default function Footer() {
             <Link to="/" className="footer-link">Home</Link>
             <Link to="/challenges" className="footer-link">Challenges</Link>
             <Link to="/gallery" className="footer-link">Gallery</Link>
+            <Link to="/topics" className="footer-link">Topics</Link>
           </div>
           <div className="footer-col">
             <div className="footer-col-title">Project</div>
