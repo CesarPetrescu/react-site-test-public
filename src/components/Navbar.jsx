@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useTheme } from '../context/ThemeContext'
 
 const NAV_LINKS = [
   { path: '/', label: 'Home' },
@@ -10,10 +11,20 @@ const NAV_LINKS = [
   { path: '/about', label: 'About' },
 ]
 
+const THEME_ICONS = {
+  dark: '🌙',
+  light: '☀️',
+  'high-contrast': '💚',
+  black: '⬛',
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [themeOpen, setThemeOpen] = useState(false)
   const location = useLocation()
+  const { theme, setTheme, THEMES, THEME_LABELS } = useTheme()
+  const dropdownRef = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -23,7 +34,18 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false)
+    setThemeOpen(false)
   }, [location])
+
+  useEffect(() => {
+    const onClick = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setThemeOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onClick)
+    return () => document.removeEventListener('mousedown', onClick)
+  }, [])
 
   return (
     <motion.nav
@@ -55,6 +77,39 @@ export default function Navbar() {
               )}
             </Link>
           ))}
+        </div>
+
+        <div className="theme-switcher" ref={dropdownRef}>
+          <button
+            className="theme-toggle-btn"
+            onClick={() => setThemeOpen(!themeOpen)}
+            aria-label="Switch theme"
+          >
+            <span className="theme-toggle-icon">{THEME_ICONS[theme]}</span>
+            <span>{THEME_LABELS[theme]}</span>
+          </button>
+          <AnimatePresence>
+            {themeOpen && (
+              <motion.div
+                className="theme-dropdown"
+                initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+              >
+                {THEMES.map((t) => (
+                  <button
+                    key={t}
+                    className={`theme-option ${theme === t ? 'active' : ''}`}
+                    onClick={() => { setTheme(t); setThemeOpen(false) }}
+                  >
+                    <span className="theme-option-icon">{THEME_ICONS[t]}</span>
+                    {THEME_LABELS[t]}
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <button
