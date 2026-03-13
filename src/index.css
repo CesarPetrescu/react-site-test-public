@@ -1977,6 +1977,67 @@ body::before {
   background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(255, 255, 255, 0.02), transparent);
 }
 
+/* ──────── MODELS PAGE ──────── */
+.model-profile {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 32px;
+}
+
+.model-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid;
+  padding-left: 24px;
+}
+
+.model-profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.model-profile-section {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+.model-trait {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  line-height: 1.5;
+}
+
+.model-score-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.model-score-label {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  min-width: 160px;
+}
+
+.model-score-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  min-width: 50px;
+  text-align: right;
+}
+
 /* ──────── RESPONSIVE ──────── */
 @media (max-width: 768px) {
   .section { padding: 80px 16px; }
@@ -2060,6 +2121,11 @@ body::before {
   .related-topics-grid {
     grid-template-columns: 1fr;
   }
+
+  .model-profile { padding: 24px 16px; }
+  .model-profile-header { flex-direction: column; text-align: center; padding-left: 16px; border-left: none; border-bottom: none; }
+  .model-profile-grid { grid-template-columns: 1fr; }
+  .model-score-label { min-width: 100px; font-size: 0.78rem; }
 }
 
 @media (max-width: 480px) {
