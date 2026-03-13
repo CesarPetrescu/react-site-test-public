@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { path: '/models', label: 'Models' },
   { path: '/results', label: 'Results' },
   { path: '/topics', label: 'Topics' },
+  { path: '/games', label: 'Games' },
   { path: '/about', label: 'About' },
 ]
 
