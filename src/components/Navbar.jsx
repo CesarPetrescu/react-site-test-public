@@ -20,6 +20,7 @@ const THEME_ICONS = {
   light: '☀️',
   'high-contrast': '💚',
   black: '⬛',
+  rgb: '🌈',
 }
 
 export default function Navbar() {

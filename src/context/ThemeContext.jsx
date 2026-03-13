@@ -1,12 +1,13 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 
-const THEMES = ['dark', 'light', 'high-contrast', 'black']
+const THEMES = ['dark', 'light', 'high-contrast', 'black', 'rgb']
 
 const THEME_LABELS = {
   dark: 'Dark',
   light: 'Light',
   'high-contrast': 'High Contrast',
   black: 'Black',
+  rgb: 'RGB',
 }
 
 const ThemeContext = createContext()
