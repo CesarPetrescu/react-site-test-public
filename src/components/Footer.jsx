@@ -26,6 +26,7 @@ export default function Footer() {
             <Link to="/models" className="footer-link">Models</Link>
             <Link to="/results" className="footer-link">Results</Link>
             <Link to="/topics" className="footer-link">Topics</Link>
+            <Link to="/games" className="footer-link">Games</Link>
           </div>
           <div className="footer-col">
             <div className="footer-col-title">Project</div>

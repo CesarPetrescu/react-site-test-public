@@ -9,6 +9,7 @@ import LeaderboardPage from './pages/LeaderboardPage'
 import ModelsPage from './pages/Models'
 import Results from './pages/Results'
 import About from './pages/About'
+import Games from './pages/Games'
 import Topics from './pages/Topics'
 import TopicDetail from './pages/TopicDetail'
 
@@ -29,6 +30,7 @@ export default function App() {
             <Route path="/results" element={<Results />} />
             <Route path="/topics" element={<Topics />} />
             <Route path="/topics/:slug" element={<TopicDetail />} />
+            <Route path="/games" element={<Games />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </AnimatePresence>
