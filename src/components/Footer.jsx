@@ -19,6 +19,12 @@ export default function Footer() {
             <Link to="/" className="footer-link">Home</Link>
             <Link to="/challenges" className="footer-link">Challenges</Link>
             <Link to="/gallery" className="footer-link">Gallery</Link>
+            <Link to="/leaderboard" className="footer-link">Leaderboard</Link>
+          </div>
+          <div className="footer-col">
+            <div className="footer-col-title">Discover</div>
+            <Link to="/models" className="footer-link">Models</Link>
+            <Link to="/results" className="footer-link">Results</Link>
             <Link to="/topics" className="footer-link">Topics</Link>
           </div>
           <div className="footer-col">
